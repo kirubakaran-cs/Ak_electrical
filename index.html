@@ -446,31 +446,88 @@
 }
 
   /* ---------- Gallery ---------- */
-  .gallery-grid{
+ .gallery-subtitle{
+    max-width:700px;
+    margin:15px auto 0;
+    color:#666;
+    line-height:1.8;
+}
+
+.project-gallery{
     display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:18px;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    gap:30px;
+    margin-top:50px;
 }
 
-.gallery-grid figure{
-    margin:0;
-    border-radius:16px;
+.project-card{
+    background:#fff;
+    border-radius:18px;
     overflow:hidden;
-    border:1px solid var(--line);
-    background:var(--navy-2);
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transition:.35s;
 }
 
-.gallery-grid img{
+.project-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 40px rgba(0,0,0,.15);
+}
+
+.project-card img{
     width:100%;
-    height:auto;          /* Remove fixed height */
+    height:250px;
+    object-fit:cover;
     display:block;
-    object-fit:contain;   /* Show full image */
 }
 
-.gallery-grid figcaption{
-    padding:14px 18px;
-    font-size:13.5px;
-    color:var(--parchment-dim);
+.project-content{
+    padding:22px;
+}
+
+.project-content h3{
+    margin:12px 0;
+    font-size:24px;
+}
+
+.project-content p{
+    color:#666;
+    line-height:1.7;
+}
+
+.project-tag{
+    display:inline-block;
+    padding:6px 14px;
+    border-radius:30px;
+    color:#fff;
+    font-size:13px;
+    font-weight:700;
+}
+
+.electrical{
+    background:#f59e0b;
+}
+
+.plumbing{
+    background:#0ea5e9;
+}
+
+.location{
+    display:block;
+    margin-top:15px;
+    color:#999;
+    font-weight:600;
+}
+
+@media(max-width:768px){
+
+.project-gallery{
+grid-template-columns:1fr;
+}
+
+.project-card img{
+height:220px;
+}
+
 }
 
   /* ---------- Hours ---------- */
@@ -962,27 +1019,115 @@
 </section>
 
 <!-- GALLERY -->
+<!-- ================= COMPLETED PROJECTS ================= -->
 <section id="gallery">
-  <div class="section-head">
-    <div class="section-eyebrow" data-en>See The Work</div>
-    <div class="section-eyebrow" data-ta>பணிகளின் காட்சிகள்</div>
-    <h2 class="section-title" data-en>Gallery</h2>
-    <h2 class="section-title" data-ta>புகைப்படத் தொகுப்பு</h2>
-  </div>
-  <div class="gallery-grid">
-    <figure>
-      <img src="images/card.jpeg" alt="AK Electrical & Plumbing at work">
-      <figcaption data-en>On-site electrical & plumbing work, Trichy</figcaption>
-      <figcaption data-ta>திருச்சியில் எலக்ட்ரிக்கல் & பிளம்பிங் பணி</figcaption>
-    </figure>
-    <figure>
-      <img src="images/ak-poster.jpg" alt="AK Electrical & Plumbing completed job">
-      <figcaption data-en>A recently completed job</figcaption>
-      <figcaption data-ta>சமீபத்தில் முடிக்கப்பட்ட ஒரு பணி</figcaption>
-    </figure>
-  </div>
-</section>
+    <div class="section-head">
+        <div class="section-eyebrow" data-en>OUR WORK</div>
+        <div class="section-eyebrow" data-ta>எங்கள் பணிகள்</div>
 
+        <h2 class="section-title" data-en>Completed Jobs</h2>
+        <h2 class="section-title" data-ta>நாங்கள் முடித்த பணிகள்</h2>
+
+        <p class="gallery-subtitle" data-en>
+            A collection of our recently completed electrical and plumbing projects across Trichy.
+        </p>
+
+        <p class="gallery-subtitle" data-ta>
+            திருச்சி மற்றும் சுற்றுப்புறங்களில் நாங்கள் வெற்றிகரமாக முடித்த மின்சாரம் மற்றும் பிளம்பிங் பணிகள்.
+        </p>
+    </div>
+
+    <div class="project-gallery">
+
+        <!-- Project 1 -->
+        <div class="project-card">
+            <img src="images/job1.jpeg" alt="House Electrical Wiring">
+
+            <div class="project-content">
+                <span class="project-tag electrical">Electrical</span>
+
+                <h3 data-en>Complete House Wiring</h3>
+                <h3 data-ta>முழு வீட்டு மின்சார வயரிங்</h3>
+
+                <p data-en>
+                    Complete electrical wiring installation for a newly constructed house.
+                </p>
+
+                <p data-ta>
+                    புதிய வீட்டிற்கு முழுமையான மின்சார வயரிங் பணியை வெற்றிகரமாக நிறைவு செய்தோம்.
+                </p>
+
+                <span class="location">📍 Trichy</span>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+            <img src="images/job2.jpeg" alt="DB Panel">
+
+            <div class="project-content">
+                <span class="project-tag electrical">Electrical</span>
+
+                <h3 data-en>Distribution Board Installation</h3>
+                <h3 data-ta>டிஸ்டிரிப்யூஷன் போர்டு நிறுவல்</h3>
+
+                <p data-en>
+                    Installed MCB distribution panel with complete safety protection.
+                </p>
+
+                <p data-ta>
+                    பாதுகாப்பு வசதிகளுடன் MCB டிஸ்டிரிப்யூஷன் போர்டு நிறுவப்பட்டது.
+                </p>
+
+                <span class="location">📍 Trichy</span>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card">
+            <img src="images/job3.jpeg" alt="Bathroom Plumbing">
+
+            <div class="project-content">
+                <span class="project-tag plumbing">Plumbing</span>
+
+                <h3 data-en>Bathroom Plumbing</h3>
+                <h3 data-ta>குளியலறை பிளம்பிங்</h3>
+
+                <p data-en>
+                    Complete bathroom pipe fitting and sanitary installation.
+                </p>
+
+                <p data-ta>
+                    முழுமையான குளியலறை பைப் பொருத்துதல் மற்றும் சானிட்டரி நிறுவல்.
+                </p>
+
+                <span class="location">📍 Trichy</span>
+            </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card">
+            <img src="images/job5.jpeg" alt="Water Tank">
+
+            <div class="project-content">
+                <span class="project-tag plumbing">Plumbing</span>
+
+                <h3 data-en>Water Tank Connection</h3>
+                <h3 data-ta>தண்ணீர் தொட்டி இணைப்பு</h3>
+
+                <p data-en>
+                    Installed overhead tank pipeline with leak-proof fittings.
+                </p>
+
+                <p data-ta>
+                    கசிவு இல்லாத பைப் இணைப்புடன் தண்ணீர் தொட்டி பொருத்தப்பட்டது.
+                </p>
+
+                <span class="location">📍 Trichy</span>
+            </div>
+          </div>
+    </div>
+</section>
 <!--Review-->
 <section id="reviews">
 
