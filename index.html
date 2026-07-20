@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ta" data-lang="ta">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -763,8 +763,8 @@
 
   <div class="navbar-right">
     <div class="lang-toggle">
-      <button id="btn-en" onclick="setLang('en')">EN</button>
-      <button id="btn-ta" class="active" onclick="setLang('ta')">தமிழ்</button>
+      <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+      <button id="btn-ta" onclick="setLang('ta')">தமிழ்</button>
     </div>
     <button class="nav-toggle" onclick="toggleNav()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -1186,27 +1186,37 @@
 </footer>
 
 <script>
-  const waMessages = {
-    en: "Hi, I found your website and I'm interested in your electrical & plumbing services. Could you share more details?",
-    ta: "வணக்கம், உங்கள் வலைத்தளத்தில் பார்த்தேன். உங்கள் எலக்ட்ரிக்கல் & பிளம்பிங் சேவைகள் குறித்து மேலும் அறிய விரும்புகிறேன்."
-  };
-  function updateWhatsAppLinks(lang){
-    const msg = encodeURIComponent(waMessages[lang] || waMessages.en);
-    document.querySelectorAll('.whatsapp-link').forEach(function(a){
-      a.href = 'https://wa.me/918925613969?text=' + msg;
-    });
-  }
-  function setLang(lang){
-    document.documentElement.setAttribute('data-lang', lang);
-    document.getElementById('btn-en').classList.toggle('active', lang==='en');
-    document.getElementById('btn-ta').classList.toggle('active', lang==='ta');
-    updateWhatsAppLinks(lang);
-  }
-  function toggleNav(){
-    document.getElementById('navLinks').classList.toggle('open');
-  }
-  updateWhatsAppLinks(document.documentElement.getAttribute('data-lang') || 'ta');
-</script>
+const waMessages = {
+  en: "Hi, I found your website and I'm interested in your electrical & plumbing services. Could you share more details?",
+  ta: "வணக்கம், உங்கள் வலைத்தளத்தில் பார்த்தேன். உங்கள் எலக்ட்ரிக்கல் & பிளம்பிங் சேவைகள் குறித்து மேலும் அறிய விரும்புகிறேன்."
+};
 
-</body>
+function updateWhatsAppLinks(lang) {
+  const msg = encodeURIComponent(waMessages[lang]);
+  document.querySelectorAll(".whatsapp-link").forEach(a => {
+    a.href = `https://wa.me/918925613969?text=${msg}`;
+  });
+}
+
+function setLang(lang) {
+  document.documentElement.setAttribute("lang", lang);
+  document.documentElement.setAttribute("data-lang", lang);
+
+  document.getElementById("btn-en").classList.toggle("active", lang === "en");
+  document.getElementById("btn-ta").classList.toggle("active", lang === "ta");
+
+  localStorage.setItem("language", lang);
+
+  updateWhatsAppLinks(lang);
+}
+
+function toggleNav() {
+  document.getElementById("navLinks").classList.toggle("open");
+}
+
+// Load saved language, otherwise English
+const savedLang = localStorage.getItem("language") || "en";
+setLang(savedLang);
+</script>
+</body> 
 </html>
